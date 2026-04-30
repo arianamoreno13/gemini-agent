@@ -1,0 +1,15 @@
+{
+  "name": "gemini-agent",
+  "version": "1.0.0",
+  "description": "Secure Gemini 2 Agent Sandbox",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Arian",
+  "license": "ISC",
+  "dependencies": {
+    "@google/genai": "^1.0.0"
+  }
+}
