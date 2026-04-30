@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 #This "hides" your key so if you push your code to Git, 
 #your secret key stays on your computer.
 .env
+=======
+.env
+node_modules/
+.DS_Store
+>>>>>>> 5bfa5ee2ec29f321a266a06241b559f8603ffa90
