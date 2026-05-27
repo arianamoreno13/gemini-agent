@@ -1,9 +1,27 @@
-<<<<<<< HEAD
-#This "hides" your key so if you push your code to Git, 
-#your secret key stays on your computer.
+# Secrets — never commit these
 .env
-=======
-.env
-node_modules/
+*.env
+.env.*
+*.key
+*.pem
+*.p12
+*secret*
+*password*
+*credential*
+
+# SSH material
+.ssh/
+id_ed25519
+id_rsa
+
+# Gemini local state
+.gemini/cache/
+.gemini/history/
+
+# OS noise
 .DS_Store
->>>>>>> 5bfa5ee2ec29f321a266a06241b559f8603ffa90
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+*.code-workspace

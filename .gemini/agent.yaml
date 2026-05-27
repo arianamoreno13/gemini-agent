@@ -1,0 +1,69 @@
+name: Aegis-404
+version: 1.0.0
+description: Local-First AI-Assisted Security Engineering Environment
+
+identity:
+  email: aegis-agent@local
+  name: Gemini Agent
+  role: DevSecOps Orchestrator
+
+runtime:
+  container: true
+  model_engine: ollama
+  model_name: gemma2
+  model_endpoint: http://litellm:4000/v1
+  proxy: litellm
+
+services:
+  ollama:
+    address: http://ollama:11434
+    role: language-model-host
+  litellm:
+    address: http://litellm:4000
+    role: openai-compatible-proxy
+
+security:
+  sandbox: true
+  isolation: container
+  network: docker-bridge (aegis-net)
+  capabilities:
+    - file-read (workspace only)
+    - file-write (workspace/.workspace/output only)
+    - shell-execute (restricted commands only)
+    - git-push (authenticated via SSH)
+  restrictions:
+    - no-external-network (except github.com:22 for SSH)
+    - no-privilege-escalation
+    - no-root-access
+    - all-capabilities-dropped
+    - no-new-privileges enforced
+
+workspace:
+  root: /workspace
+  output: /workspace/output
+  reports: /workspace/reports
+  scripts: /workspace/scripts
+  git:
+    remote: git@github.com:YOUR_USERNAME/YOUR_REPO.git
+    ssh-key: /root/.ssh/aegis-git (read-only mount)
+
+conventions:
+  file-headers: true
+  commit-messages: conventional
+  security-flags: true
+  type-hints: required
+  docstrings: required
+
+roadmap:
+  phase-1:
+    name: Environment Runtime Pivot
+    status: active
+    goal: Migrate from LiteLLM to native lit runtime
+  phase-2:
+    name: Configuration Realignment
+    status: planned
+    goal: Implement official gemmaModelRouter
+  phase-3:
+    name: Tool-Use Validation
+    status: planned
+    goal: Verify structured tool-calling accuracy

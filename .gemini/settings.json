@@ -1,0 +1,15 @@
+{
+  "model": "gemini-2.0-flash",
+  "sandbox": true,
+  "tools": {
+    "fileSystem": {
+      "allowedPaths": ["/workspace"],
+      "denyPatterns": ["../", "~", "/etc", "/home", "/root", "/proc", "/sys"]
+    },
+    "shell": {
+      "allow": true,
+      "allowedCommands": ["git", "ls", "cat", "echo", "mkdir", "cp", "mv"],
+      "blockedCommands": ["curl", "wget", "nc", "ssh", "sudo", "su", "chmod", "chown"]
+    }
+  }
+}

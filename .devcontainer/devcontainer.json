@@ -1,0 +1,20 @@
+{
+  "name": "gemini",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "aegis",
+  "workspaceFolder": "/workspace",
+  "envFile": "${localEnv:USERPROFILE}/.aegis.env",
+
+  "mounts": [
+    "source=C:\\Users\\arian\\OneDrive\\Desktop\\Gemini,target=/workspace,type=bind,consistency=cached",
+    "source=C:\\Users\\arian\\.ssh\\aegis-git,target=/root/.ssh,type=bind,readonly"
+  ],
+
+  "remoteUser": "root",
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["google.geminicodeassist"]
+    }
+  }
+}
